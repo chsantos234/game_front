@@ -20,7 +20,7 @@ const Home = () => {
           <p>
             Ver descrição / notas de um jogo
           </p>
-          <Button colorScheme='blue' className='w-fit' onClick={() => navigate('')}>
+          <Button colorScheme='blue' className='w-fit' onClick={() => navigate('/notas')}>
             Clique
           </Button>
         </li>
@@ -28,7 +28,7 @@ const Home = () => {
           <p>
             Ver histórico de preços na steam
           </p>
-          <Button colorScheme='blue' className='w-fit' onClick={() => navigate('')}>
+          <Button colorScheme='blue' className='w-fit' onClick={() => navigate('/historico')}>
             Clique
           </Button>
         </li>

@@ -8,6 +8,8 @@ import {
 
 import Home from './pages/Home'
 import Vendas from './pages/Vendas'
+import Desc from './pages/Desc'
+import Hist from './pages/Hist'
 
 
 const router = createBrowserRouter([
@@ -18,7 +20,15 @@ const router = createBrowserRouter([
   {
     path: "/vendas",
     element: <Vendas />
-  }
+  },
+  {
+    path: "/notas",
+    element: <Desc />
+  },
+  {
+    path: "/historico",
+    element: <Hist />
+  },
 ])
 
 function App() {
