@@ -12,13 +12,13 @@ const Home = () => {
           <p>
             Ver preços entre vendas
           </p>
-          <Button colorScheme='blue' className='w-fit' onClick={() => navigate('')}>
+          <Button colorScheme='blue' className='w-fit' onClick={() => navigate('/vendas')}>
             Clique
           </Button>
         </li>
         <li className='flex flex-col gap-4 items-center'>
           <p>
-            Ver descrição de um jogo
+            Ver descrição / notas de um jogo
           </p>
           <Button colorScheme='blue' className='w-fit' onClick={() => navigate('')}>
             Clique
@@ -27,14 +27,6 @@ const Home = () => {
         <li className='flex flex-col gap-4 items-center'>
           <p>
             Ver histórico de preços na steam
-          </p>
-          <Button colorScheme='blue' className='w-fit' onClick={() => navigate('')}>
-            Clique
-          </Button>
-        </li>
-        <li className='flex flex-col gap-4 items-center'>
-          <p>
-            Ver notas de um jogo
           </p>
           <Button colorScheme='blue' className='w-fit' onClick={() => navigate('')}>
             Clique

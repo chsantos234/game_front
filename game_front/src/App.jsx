@@ -7,29 +7,21 @@ import {
 } from "react-router-dom"
 
 import Home from './pages/Home'
+import Vendas from './pages/Vendas'
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />
+  },
+  {
+    path: "/vendas",
+    element: <Vendas />
   }
 ])
 
 function App() {
-/*
-  async function get_json() {
-    await axios.get("http://localhost:5173/")
-      .then(function (response) {
-        setResp(response)
-      })
-      .catch(function (error) {
-        console.error(error);
-      })
-  }
-
-  const [resp,setResp] = useState()
-*/
   return (
     <>
       <RouterProvider router={router}/>
