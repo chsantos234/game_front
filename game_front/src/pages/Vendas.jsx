@@ -7,7 +7,7 @@ const Vendas = () => {
   const navigate = useNavigate()
   const [theme, setTheme] = useState('')
   const [game, setGame] = useState('')
-  const [gameId,setGameId] = useState(null)
+  const [gameId,setGameId] = useState(none)
 
 
   const getTheme = async () => { }
@@ -16,7 +16,9 @@ const Vendas = () => {
   
   return (
     <div>
-      
+
     </div>
   )
 }
+
+export default Vendas
