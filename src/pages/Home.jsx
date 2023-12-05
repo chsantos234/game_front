@@ -30,7 +30,7 @@ const Home = () => {
       <ul3 className='flex gap-y-12 bg-slate-400 p-10 rounded-lg items-center text-lg text-gray-100 font-medium flex-col'>
         <li3 className='flex flex-col gap-4 items-center'>
           <p>
-            Ver histórico de preços na steam
+            Ver menor preço e histórico de preços na steam
           </p>
           <Button colorScheme='blue' className='w-fit' onClick={() => navigate('/historico')}>
             Clique
