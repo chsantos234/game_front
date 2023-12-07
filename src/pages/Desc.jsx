@@ -5,40 +5,31 @@ import { Button, Input } from "@chakra-ui/react"
 
 const Desc = () => {
   const navigate = useNavigate()
-  // informações de pesquisa: 
-  const [theme, setTheme] = useState('') // pesquisa
-  const [gameId, setGameId] = useState(null) // escolha do usuário
-
-  // informações do jogo:
-  const [gameDesc, setGameDesc] = useState('')
-  const [gameReleaseDate, setGameReleaseDate] = useState('')
-  const [gameMetacritic, setGameMetacritic] = useState('')
-  const [gameRecommendations, setGameRecommendations] = useState('')
-  const [gameDeveloper, setGameDeveloper] = useState('')
-  const [gamePublisher, setGamePublisher] = useState('')
-  const [gameReqMinimu, setGameReqMinimu] = useState('')
-  const [gameReqMax, setGameReqMax] = useState('')
+  const [theme, setTheme] = useState(null)
+  const [gameList, setGameList] = useState(null)
+  const [gameId, setGameId] = useState(null)
+  const [gameOverview, setGameOverview] = useState(null)
 
 
   const getTheme = async () => {
-    const response = await axios.post('http://127.0.0.1:8080', JSON.stringify(`tema,${theme}`))
+    const response = await axios.post('http://127.0.0.1:8080', JSON.stringify(`getGameByTheme.${theme}`))
     if (response) {
-      setTheme(response.data)
+      setGameList(JSON.parse(response.data.replace(/'/g, '"')))
     }
   }
 
-  //const getGameId = async () => {
-  //  const response = await axios.post('http://127.0.0.1:8080', JSON.stringify(`letras,${gameId}`))
-  //  if (response) {
-  //    setGameId(response.data)
-  //  }
-  //}
+  const getGameId = async () => {
+    const response = await axios.post('http://127.0.0.1:8080', JSON.stringify(`getGameOverview.${gameId}`))
+    if (response) {
+      setGameOverview(response.data)
+    }
+  }
 
   return (
     <div className='min-h-screen flex flex-col justify-center items-center'>
-      {!theme ? <div className="flex flex-col justify-center items-center gap-8">
+      {!gameList ? <div className="flex flex-col justify-center items-center gap-8">
         <div className='flex gap-1'>
-          <Input placeholder='Digite um tema de jogo' size='md' width={230} onChange={(e) => getTheme(e.target.value)} />
+          <Input placeholder='Digite um tema de jogo' size='md' width={230} onChange={(e) => setTheme(e.target.value)} />
           <Button colorScheme='green' onClick={getTheme}>
             Buscar
           </Button>
@@ -48,22 +39,24 @@ const Desc = () => {
         </Button>
       </div>
         :
-        !details ? <div className="flex flex-col gap-8 items-center justify-center">
-          <div className='text-justify' dangerouslySetInnerHTML={{ __html: music.replaceAll('\n', '<br />') }} />
-          <div className='flex gap-1'>
-            <Input placeholder='Digite o ID de alguma música da lista acima' width={430} onChange={(e) => setLyricsId(e.target.value)} />
-            <Button colorScheme='green' onClick={getLyric}>
-              Buscar
-            </Button>
-          </div>
+        gameList && !gameOverview ? <div className="flex flex-col gap-8 items-center justify-center">
+          {gameList.map(i => {
+            return <p>{i}</p>
+        })}
+        <div className='flex gap-1'>
+          <Input placeholder='Digite o ID de alguma música da lista acima' width={430} onChange={(e) => setGameId(e.target.value)} />
+            <Button colorScheme='green' onClick={getGameId}>
+            Buscar
+          </Button>
         </div>
-          :
-          <div className="flex flex-col gap-6">
-            <Button colorScheme='yellow' width={70} onClick={() => navigate('/')}>
-              Voltar
-            </Button>
-            <div dangerouslySetInnerHTML={{ __html: lyrics }} />
-          </div>}
+      </div>
+      :
+      <div className="flex flex-col gap-6">
+        <div className='text-justify' dangerouslySetInnerHTML={{ __html: gameOverview.replaceAll('\n', '<br />') }} />
+        <Button colorScheme='yellow' width={70} onClick={() => navigate('/')}>
+          Voltar
+        </Button>
+      </div>}
     </div>
   )
 }
