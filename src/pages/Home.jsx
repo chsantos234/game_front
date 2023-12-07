@@ -10,9 +10,9 @@ const Home = () => {
       <ul1 className='flex gap-y-12 bg-slate-400 p-10 rounded-lg items-center text-lg text-gray-100 font-medium flex-col'>
         <li1 className='flex flex-col gap-4 items-center'>
           <p>
-            Ver preços entre vendas
+            Ver descrição de um jogo
           </p>
-          <Button colorScheme='blue' className='w-fit' onClick={() => navigate('/vendas')}>
+          <Button colorScheme='blue' className='w-fit' onClick={() => navigate('/descricao')}>
             Clique
           </Button>
         </li1>
@@ -20,9 +20,9 @@ const Home = () => {
       <ul2 className='flex gap-y-12 bg-slate-400 p-10 rounded-lg items-center text-lg text-gray-100 font-medium flex-col'>
         <li2 className='flex flex-col gap-4 items-center'>
           <p>
-            Ver descrição / notas de um jogo
+            Ver preços entre vendas
           </p>
-          <Button colorScheme='blue' className='w-fit' onClick={() => navigate('/notas')}>
+          <Button colorScheme='blue' className='w-fit' onClick={() => navigate('/vendas')}>
             Clique
           </Button>
         </li2>
