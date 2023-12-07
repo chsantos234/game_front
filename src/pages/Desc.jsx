@@ -44,7 +44,7 @@ const Desc = () => {
             return <p>{i}</p>
         })}
         <div className='flex gap-1'>
-          <Input placeholder='Digite o ID de alguma música da lista acima' width={430} onChange={(e) => setGameId(e.target.value)} />
+          <Input placeholder='Digite o ID de algum jogo da lista acima' width={430} onChange={(e) => setGameId(e.target.value)} />
             <Button colorScheme='green' onClick={getGameId}>
             Buscar
           </Button>
