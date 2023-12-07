@@ -19,10 +19,11 @@ const Vendas = () => {
   }
 
   const getGameId = async () => {
-    const response = await axios.post('http://127.0.0.1:8080', JSON.stringify(`getGameLowest.${gameId}`))
+    const response = await axios.post('http://127.0.0.1:8080', JSON.stringify(`getGamePrices.${gameId}`))
     if (response) {
-      //console.log(response.data)
-      setGameOverview(JSON.parse(response.data))
+      var resp = JSON.parse(response.data.replace(/'/g, '"'))
+      console.log(resp)
+      setGameOverview(resp)
     }
   }
 
@@ -53,7 +54,9 @@ const Vendas = () => {
         </div>
           :
           <div className="flex flex-col gap-6">
-            <div className='text-justify' dangerouslySetInnerHTML={{ __html: gameOverview.replaceAll('\n', '<br />') }} />
+            {gameOverview.map(i => {
+              return <p>{i}</p>
+            })}
             <Button colorScheme='yellow' width={70} onClick={() => navigate('/')}>
               Voltar
             </Button>

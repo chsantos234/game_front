@@ -19,9 +19,9 @@ const Hist = () => {
   }
 
   const getGameId = async () => {
-    const response = await axios.post('http://127.0.0.1:8080', JSON.stringify(`getGameOverview.${gameId}`))
+    const response = await axios.post('http://127.0.0.1:8080', JSON.stringify(`getGameLowest.${gameId}`))
     if (response) {
-      setGameOverview(response.data)
+      setGameOverview(JSON.parse(response.data.replace(/'/g, '"')))
     }
   }
 
@@ -52,7 +52,14 @@ const Hist = () => {
         </div>
           :
           <div className="flex flex-col gap-6">
-            <div className='text-justify' dangerouslySetInnerHTML={{ __html: gameOverview.replaceAll('\n', '<br />') }} />
+            <p>Menor preço atual:</p>
+            <p>Loja: {gameOverview.store_today}</p>
+            <p>Preço: {gameOverview.price_today}</p>
+            <p>Menor preço histórico: </p>
+            <p>Loja: {gameOverview.store_hist}</p>
+            <p>Preço: {gameOverview.price_hist}</p>
+            <p>Url do histórico: {gameOverview.price_url}</p>
+            <p>Data do preço: {gameOverview.date}</p>
             <Button colorScheme='yellow' width={70} onClick={() => navigate('/')}>
               Voltar
             </Button>
